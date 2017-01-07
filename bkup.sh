@@ -15,8 +15,6 @@ DATE=$(echo $DATEP | sed 's/[-_:]//g')
 # Define the items for exclusion from the backups. Generally, just exclude the *.git files
 EXCLUSIONS=*.git
 
-
-
 # Make sure that cat only works with new-lines as the delimiter
 IFS=$'\n'
 
