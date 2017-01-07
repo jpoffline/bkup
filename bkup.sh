@@ -19,6 +19,12 @@ fi
 # Scrape the .bkp-config filename from the first command line argument
 SOURCE_FILENAME=$1'.bkp-config'
 
+# Make sure that the user provided a valid .bkp-config file name prefix
+if [ ! -f $SOURCE_FILENAME ]; then
+    echo "    ERROR: "$SOURCE_FILENAME" does not exist"
+    exit
+fi
+
 # Get a pretty-version of the date-time
 DATEP=`date +%Y-%m-%d_%H:%M:%S`
 
