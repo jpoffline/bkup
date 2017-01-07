@@ -15,8 +15,7 @@ DATE=$(echo $DATEP | sed 's/[-_:]//g')
 # Define the items for exclusion from the backups. Generally, just exclude the *.git files
 EXCLUSIONS=*.git
 
-mkdir -p 'bkup-logs/'$USER
-LOGFILE='bkup-logs/'$USER'/log_'$DATE'.txt'
+
 
 # Make sure that cat only works with new-lines as the delimiter
 IFS=$'\n'
@@ -26,6 +25,12 @@ line=$(head -1 $SOURCE_FILENAME)
 
 # Scrape out the #tgt: specifier from the sources file
 TARGET=$(echo $line | sed 's/#tgt:*//' )
+
+BKP_LOGS_DIR=$TARGET'/bkp-logs'
+mkdir -p $BKP_LOGS_DIR
+LOGFILE=$BKP_LOGS_DIR'/log-'$DATE'.txt'
+TGTROOT=$TARGET
+TARGET=$TARGET'/bkp'
 
 # Read in the .bkp-config file
 filelines=`cat $SOURCE_FILENAME`
@@ -71,8 +76,16 @@ done;
 
 echo "* backup complete"
 
-# Parse the logfile
-./bkup-parse-log.sh $LOGFILE
+# Parse the logfile for this backup
+# pipe the output to a summary file.
+LOG_SUMMARY_FILE=$TGTROOT'/bkp-log-summary.txt'
+./bkup-parse-log.sh $LOGFILE > $LOG_SUMMARY_FILE
+cat $LOG_SUMMARY_FILE
+
+# Copy the summary file to the bkp-logs dir
+cp $LOG_SUMMARY_FILE $BKP_LOGS_DIR'/log-'$DATE'-summary.txt'
+
+
 
 echo "- - - - - - - - - - DONE - - - - - - - - - -"
 echo ""
