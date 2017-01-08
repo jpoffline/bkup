@@ -1,9 +1,8 @@
-#tgt:/Users/jap/test/dev-bkup
 #tgt:/Volumes/main/backups/air
 #locations:
 /Users/jap/mycodes
 /Users/jap/bin
-#/Users/jap/work
-#/Users/jap/Movies
-#/Users/jap/Documents
+/Users/jap/work
+/Users/jap/Movies
+/Users/jap/Documents
 /Users/jap/.bash_profile

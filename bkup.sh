@@ -76,6 +76,9 @@ echo "* begin"
 
 # Write the header of the logfile
 echo '' > $LOGFILE
+echo 'STRTLOG' >> $LOGFILE
+echo '' >> $LOGFILE
+echo 'STRTMETA' >> $LOGFILE
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - - -" >> $LOGFILE
 echo "backup script "                                        >> $LOGFILE
 echo "bkup-version " $VERSION                                >> $LOGFILE
@@ -84,6 +87,7 @@ echo "bkup-user    " $USER                                   >> $LOGFILE
 echo "bkup-host    " $(hostname)                             >> $LOGFILE
 echo "bkup-date    " $DATEP                                  >> $LOGFILE
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - - -" >> $LOGFILE
+echo 'ENDMETA' >> $LOGFILE
 echo '' >> $LOGFILE
 
 # Loop through the items in the .bkp-config file;
@@ -100,6 +104,7 @@ for src in $filelines ; do
         echo '' >> $LOGFILE
     fi
 done;    
+echo 'ENDLOG' >> $LOGFILE
 
 echo "* backup complete"
 
