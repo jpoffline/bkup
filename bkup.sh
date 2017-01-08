@@ -17,7 +17,7 @@ then
 fi
 
 # Scrape the .bkp-config filename from the first command line argument
-SOURCE_FILENAME=$1'.bkp-config'
+SOURCE_FILENAME='/Volumes/main/backups/bkp-configs/'$1'.bkp-config'
 
 # Make sure that the user provided a valid .bkp-config file name prefix
 if [ ! -f $SOURCE_FILENAME ]; then
@@ -115,7 +115,7 @@ echo "* backup complete"
 LOG_SUMMARY_FILE=$TGTROOT'/bkp-log-summary.txt'
 
 # Call the bkup-parse-log tool; output gets piped to log-summary file.
-./bkup-parse-log.sh $LOGFILE > $LOG_SUMMARY_FILE
+bkup-parse-log.sh $LOGFILE > $LOG_SUMMARY_FILE
 
 # Cat the content of the bkp-log-summary file to screen
 cat $LOG_SUMMARY_FILE
