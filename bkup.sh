@@ -17,6 +17,7 @@ then
 fi
 
 # Scrape the .bkp-config filename from the first command line argument
+# NOTE that the bkp-configs files live on the backup-drive...
 SOURCE_FILENAME='/Volumes/main/backups/bkp-configs/'$1'.bkp-config'
 
 # Make sure that the user provided a valid .bkp-config file name prefix
