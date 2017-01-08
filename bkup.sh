@@ -65,6 +65,7 @@ echo ""
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - - -"
 echo " BACKUP SCRIPT       v"$VERSION
 echo "   USER:            "  $USER
+echo "   HOST:            "  $(hostname)
 echo "   DATE:            "  $DATEP
 echo "   BACKUP-TARGET:   "  $TARGET
 echo "   BKP-CONFIG-FILE: "  $SOURCE_FILENAME
@@ -80,6 +81,7 @@ echo "backup script "                                        >> $LOGFILE
 echo "bkup-version " $VERSION                                >> $LOGFILE
 echo "bkup-tgt     " $TARGET                                 >> $LOGFILE
 echo "bkup-user    " $USER                                   >> $LOGFILE
+echo "bkup-host    " $(hostname)                             >> $LOGFILE
 echo "bkup-date    " $DATEP                                  >> $LOGFILE
 echo "- - - - - - - - - - - - - - - - - - - - - - - - - - -" >> $LOGFILE
 echo '' >> $LOGFILE
